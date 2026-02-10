@@ -11,7 +11,7 @@ if (age<7){
 } else{ 
     console.log("Buy a ticket")
     
-    if (age < 16){
+    if (age < 17){
     console.log("Child ticket");
     } else{
     console.log("Full ticket") 

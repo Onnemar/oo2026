@@ -57,21 +57,21 @@ for(let height=150; height<=190;height+=2){
 }
 console.log(results);
 
-//ring area
-//A = π r *r
-//we store the value of pii
-// cont pi:number 3,1415;
+// Func 05
+// Calculate the area of a circle
+function circleArea(r: number): number {
+    const pi: number = 3.1415;
 
-//we calculate the area of circle
-//A = π r *r
-//let area:number=pi *Math.pow(radius,2);
+    // Area formula: π × r²
+    let area: number = pi * Math.pow(r, 2);
 
-function circleArea (r:number):number{
-   const pi:number 3.1415;
-   let area:number = pi * Math.pow(r,2);
-   let roundArea: number =Math.round(area*100/100);
-   return roundArea;
+    // Round to 2 decimal places
+    let roundedArea: number = Math.round(area * 100) / 100;
+
+    return roundedArea;
 }
-let r: number= 10;
-let area:number =circleArea(r)
-console.log("area of the circle with radius "+r+" is "+area);
+
+let r: number = 10;
+let area: number = circleArea(r);
+
+console.log("Area of the circle with radius " + r + " is " + area);

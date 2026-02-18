@@ -5,37 +5,24 @@
 // and the average number of ethnic representatives in each county.
 // Data is taken from Statistikaamet (https://andmed.stat.ee/et/stat): RV022U: RAHVASTIK SOO, VANUSERÜHMA, RAHVUSE JA MAAKONNA JÄRGI, 1. JAANUAR [12.09.2025].
 var County = /** @class */ (function () {
-    function County(name, Estonian, Russian, Ukranian, Other, Unknown) {
+    function County(name, Estonian, Russian, Ukrainian, Other, Unknown) {
         this.name = name;
         this.Estonian = Estonian;
         this.Russian = Russian;
-        this.Ukranian = Ukranian;
+        this.Ukrainian = Ukrainian;
         this.Other = Other;
         this.Unknown = Unknown;
     }
     //this mode is to show the population numbers
     County.prototype.show = function () {
-        console.log(this.name, this.Estonian, this.Russian, this.Ukranian, this.Other, this.Unknown);
+        console.log(this.name, this.Estonian, this.Russian, this.Ukrainian, this.Other, this.Unknown);
     };
     //Average number in nationalities per a specific county.
     County.prototype.averagePopulation = function () {
-        return (this.Estonian + this.Russian + this.Ukranian + this.Other + this.Unknown) / 5;
+        return (this.Estonian + this.Russian + this.Ukrainian + this.Other + this.Unknown) / 5;
     };
-    //Average number of specific nationality in all counties.
-    County.prototype.averageEstonian = function (count) {
-        return this.Estonian / count;
-    };
-    County.prototype.averageRussian = function (count) {
-        return this.Russian / count;
-    };
-    County.prototype.averageUkranian = function (count) {
-        return this.Ukranian / count;
-    };
-    County.prototype.averageOther = function (count) {
-        return this.Other / count;
-    };
-    County.prototype.averageUnknown = function (count) {
-        return this.Unknown / count;
+    County.prototype.getPopulation = function () {
+        return { Estonian: this.Estonian, Russian: this.Russian, Ukrainian: this.Ukrainian, Other: this.Other, Unknown: this.Unknown };
     };
     return County;
 }());
@@ -62,28 +49,19 @@ for (var _i = 0, Counties_1 = Counties; _i < Counties_1.length; _i++) {
 }
 console.log("----------");
 var countyCount = Counties.length;
-// Summeerime kõik keskmised korraga
-var avgEstonian = 0;
-var avgRussian = 0;
-var avgUkrainian = 0;
-var avgOther = 0;
-var avgUnknown = 0;
+//combine nationalities population into total
+var averageEstonian = 0;
+var averageRussian = 0;
+var averageUkrainian = 0;
+var averageOther = 0;
+var averageUnknown = 0;
 for (var _a = 0, Counties_2 = Counties; _a < Counties_2.length; _a++) {
     var c = Counties_2[_a];
-    avgEstonian += c.averageEstonian(1); // jagame ühega, et saada täisarv
-    avgRussian += c.averageRussian(1);
-    avgUkrainian += c.averageUkranian(1); // sinu meetod on veel vana nimega
-    avgOther += c.averageOther(1);
-    avgUnknown += c.averageUnknown(1);
+    var population = c.getPopulation();
+    averageEstonian += population.Estonian / countyCount;
+    averageRussian += population.Russian / countyCount;
+    averageUkrainian += population.Ukrainian / countyCount;
+    averageOther += population.Other / countyCount;
+    averageUnknown += population.Unknown / countyCount;
 }
-// Jagame maakondade arvuga, et saada keskmine üle kõikide maakondade
-avgEstonian /= countyCount;
-avgRussian /= countyCount;
-avgUkrainian /= countyCount;
-avgOther /= countyCount;
-avgUnknown /= countyCount;
-console.log("Average of Estonians per county: " + avgEstonian +
-    ", Average of Russians per county: " + avgRussian +
-    ", Average of Ukrainians per county: " + avgUkrainian +
-    ", Average of Other per county: " + avgOther +
-    ", Average of Unknown per county: " + avgUnknown);
+console.log("Average of Estonians per county " + averageEstonian + " average of Russians per county " + averageRussian + " average of Ukranians per county " + averageUkrainian + " average of other nationalities per county " + averageOther + " average of people of unknown nationality per county " + averageUnknown + ".");

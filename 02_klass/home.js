@@ -4,53 +4,86 @@
 //The program shows the arithmetic average of ethnic representatives per county, 
 // and the average number of ethnic representatives in each county.
 // Data is taken from Statistikaamet (https://andmed.stat.ee/et/stat): RV022U: RAHVASTIK SOO, VANUSERÜHMA, RAHVUSE JA MAAKONNA JÄRGI, 1. JAANUAR [12.09.2025].
-var population = /** @class */ (function () {
-    function population(county, Estonian, Russian, Ukranian, Other, Unknown) {
+var County = /** @class */ (function () {
+    function County(name, Estonian, Russian, Ukranian, Other, Unknown) {
+        this.name = name;
         this.Estonian = Estonian;
         this.Russian = Russian;
         this.Ukranian = Ukranian;
         this.Other = Other;
         this.Unknown = Unknown;
     }
-    //this mode is to show the grades
-    population.prototype.show = function () {
-        console.log(this.Estonian, this.Russian, this.Ukranian, this.Other, this.Unknown);
+    //this mode is to show the population numbers
+    County.prototype.show = function () {
+        console.log(this.name, this.Estonian, this.Russian, this.Ukranian, this.Other, this.Unknown);
     };
-    population.prototype.averagePopulation = function () {
+    //Average number in nationalities per a specific county.
+    County.prototype.averagePopulation = function () {
         return (this.Estonian + this.Russian + this.Ukranian + this.Other + this.Unknown) / 5;
     };
-    population.prototype.averageEstonian = function (count) {
+    //Average number of specific nationality in all counties.
+    County.prototype.averageEstonian = function (count) {
         return this.Estonian / count;
     };
-    population.prototype.averageRussian = function (count) {
+    County.prototype.averageRussian = function (count) {
         return this.Russian / count;
     };
-    population.prototype.averageUkranian = function (count) {
+    County.prototype.averageUkranian = function (count) {
         return this.Ukranian / count;
     };
-    population.prototype.averageOther = function (count) {
+    County.prototype.averageOther = function (count) {
         return this.Other / count;
     };
-    population.prototype.averageUnknown = function (count) {
+    County.prototype.averageUnknown = function (count) {
         return this.Unknown / count;
     };
-    return population;
+    return County;
 }());
-var populations = [
-    { county: "Harju county", Estonian: 388770, Russian: 161711, Ukranian: 45682, Other: 46950, Unknown: 3911 },
-    { county: "Hiiu county", Estonian: 8144, Russian: 42, Ukranian: 56, Other: 95, unknown: 9 },
-    { county: "Ida-Viru county", Estonian: 26427, Russian: 89220, Ukranian: 6604, Other: 7682, Unknown: 223 },
-    { county: "Jõgeva county", Estonian: 24148, Russian: 1635, Ukranian: 812, Other: 378, Unknown: 58 },
-    { county: "Järva county", Estonian: 27322, Russian: 624, Ukranian: 1285, Other: 485, Unknown: 99 },
-    { county: "Lääne county", Estonian: 17686, Russian: 1400, Ukranian: 720, Other: 444, unknown: 108 },
-    { county: "Lääne-Viru county", Estonian: 50113, Russian: 4753, Ukranian: 2604, Other: 132, Unknown: 273 },
-    { county: "Põlva county", Estonian: 22076, Russian: 715, Ukranian: 515, Other: 207, Unknown: 40 },
-    { county: "Pärnu county", Estonian: 76319, Russian: 5058, Ukranian: 3936, Other: 2071, Unknown: 363 },
-    { county: "Rapla county", Estonian: 31387, Russian: 1005, Ukranian: 892, Other: 579, Unknown: 127 },
-    { county: "Saare county", Estonian: 30351, Russian: 181, Ukranian: 665, Other: 383, Unknown: 224 },
-    { county: "Tartu county", Estonian: 137049, Russian: 14308, Ukranian: 6572, Other: 6388, Unknown: 333 },
-    { county: "Valga county", Estonian: 21488, Russian: 3138, Ukranian: 1197, Other: 1602, Unknown: 135 },
-    { county: "Viljandi county", Estonian: 42172, Russian: 993, Ukranian: 1236, Other: 683, Unknown: 84 },
-    { county: "Võru county", Estonian: 31273, Russian: 1036, Ukranian: 821, Other: 429, Unknown: 169 },
+var Counties = [
+    new County("Harju county", 388770, 161711, 45682, 46950, 3911),
+    new County("Hiiu county", 8144, 42, 56, 95, 9),
+    new County("Ida-Viru county", 26427, 89220, 6604, 7682, 223),
+    new County("Jõgeva county", 24148, 1635, 812, 378, 58),
+    new County("Järva county", 27322, 624, 1285, 485, 99),
+    new County("Lääne county", 17686, 1400, 720, 444, 108),
+    new County("Lääne-Viru county", 50113, 4753, 2604, 132, 273),
+    new County("Põlva county", 22076, 715, 515, 207, 40),
+    new County("Pärnu county", 76319, 5058, 3936, 2071, 363),
+    new County("Rapla county", 31387, 1005, 892, 579, 127),
+    new County("Saare county", 30351, 181, 665, 383, 224),
+    new County("Tartu county", 137049, 14308, 6572, 6388, 333),
+    new County("Valga county", 21488, 3138, 1197, 1602, 135),
+    new County("Viljandi county", 42172, 993, 1236, 683, 84),
+    new County("Võru county", 31273, 1036, 821, 429, 169),
 ];
-console.log(population);
+for (var _i = 0, Counties_1 = Counties; _i < Counties_1.length; _i++) {
+    var c = Counties_1[_i];
+    console.log(c.name + " has average amount of people per nationality " + c.averagePopulation());
+}
+console.log("----------");
+var countyCount = Counties.length;
+// Summeerime kõik keskmised korraga
+var avgEstonian = 0;
+var avgRussian = 0;
+var avgUkrainian = 0;
+var avgOther = 0;
+var avgUnknown = 0;
+for (var _a = 0, Counties_2 = Counties; _a < Counties_2.length; _a++) {
+    var c = Counties_2[_a];
+    avgEstonian += c.averageEstonian(1); // jagame ühega, et saada täisarv
+    avgRussian += c.averageRussian(1);
+    avgUkrainian += c.averageUkranian(1); // sinu meetod on veel vana nimega
+    avgOther += c.averageOther(1);
+    avgUnknown += c.averageUnknown(1);
+}
+// Jagame maakondade arvuga, et saada keskmine üle kõikide maakondade
+avgEstonian /= countyCount;
+avgRussian /= countyCount;
+avgUkrainian /= countyCount;
+avgOther /= countyCount;
+avgUnknown /= countyCount;
+console.log("Average of Estonians per county: " + avgEstonian +
+    ", Average of Russians per county: " + avgRussian +
+    ", Average of Ukrainians per county: " + avgUkrainian +
+    ", Average of Other per county: " + avgOther +
+    ", Average of Unknown per county: " + avgUnknown);

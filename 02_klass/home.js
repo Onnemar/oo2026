@@ -64,4 +64,4 @@ for (var _a = 0, Counties_2 = Counties; _a < Counties_2.length; _a++) {
     averageOther += population.Other / countyCount;
     averageUnknown += population.Unknown / countyCount;
 }
-console.log("Average of Estonians per county " + averageEstonian + " average of Russians per county " + averageRussian + " average of Ukranians per county " + averageUkrainian + " average of other nationalities per county " + averageOther + " average of people of unknown nationality per county " + averageUnknown + ".");
+console.log("Average of Estonians per county " + Math.round(averageEstonian) + ", average of Russians per county " + Math.round(averageRussian) + ", average of Ukranians per county " + Math.round(averageUkrainian) + ", average of other nationalities per county " + Math.round(averageOther) + ", average of people of unknown nationality per county " + Math.round(averageUnknown) + ".");

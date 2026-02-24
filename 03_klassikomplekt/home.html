@@ -15,34 +15,34 @@
             l02= new Addable2 (0, ctx , 175, 225, 200 );
             vor= new Equals (ctx, 305, 325, 200);
             sum= new Total (0, ctx , 300, 350, 200 );
+
             document.getElementById("range1"). value=String(l01.getL1());
             document.getElementById("val1").innerText=l01.getL1();
 
             document.getElementById("range2"). value=String(l02.getL2());
             document.getElementById("val2").innerText=l02.getL2();
 
-            document.getElementById("totalVal").innerText = sum.getS();
+            document.getElementById("sumlVal").innerText = sum.getS();
         }
 
-            function updateTotal() {
-        const total = l01.getL1() + l02.getL2();
-        sum.setS(total);
-        document.getElementById("totalVal").innerText = total;
+        function updateSum() {
+            const total = l01.getL1() + l02.getL2();
+            sum.setS(total);
+            document.getElementById("sumVal").innerText = total;
         }
 
         function onRange1(input){
             const v=input.valueAsNumber;
             l01.setL1(v);
             document. getElementById("val1").innerText=v;
-            updateTotal();
+            updateSum();
         }
-
 
         function onRange2(input){
             const v=input.valueAsNumber;
             l02.setL2(v);
             document. getElementById("val2").innerText=v;
-            updateTotal();
+            updateSum();
         }
     </script>
 </head>
@@ -50,10 +50,10 @@
     <canvas id="canvas1" width="500" height="500"></canvas>
 
     <input type="range" id="range1" min="0" max="1000" oninput="onRange1(this)"/>
-    <span id="val1"></span>Ω
+    <span id="val1"></span>
 
     <input type="range" id="range2" min="0" max="1000" oninput="onRange2(this)"/>
-    <span id="val2"></span>Ω
+    <span id="val2"></span>
 
 
 </body>

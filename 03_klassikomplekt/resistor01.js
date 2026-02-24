@@ -1,4 +1,4 @@
-var Resistor = /** @class */ (function () {
+var Resistor = /** class **/ (function () {
     function Resistor(r, g) {
         this.r = r;
         this.g = g;

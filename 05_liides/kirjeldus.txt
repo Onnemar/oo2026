@@ -1,1 +1,3 @@
 Omaloodud liides või liideste komplekt. Realiseerivad klassid. Näitprogramm
+
+interface ja html. tee töötav leht

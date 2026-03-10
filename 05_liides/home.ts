@@ -1,14 +1,29 @@
+
 //fabCalc- fabric calculation
-interface fabCalc{
+interface fabCalc1{
     //x võib olla interfaceist väljas muu nimi. nt cm jne
     calculate(x:number):number;
-
     inputUnit():string;
-
+    outputUnit():string;
+}
+interface fabCalc2{
+    //x võib olla interfaceist väljas muu nimi. nt cm jne
+    calculate(x1:number,x2:number):number;
+    inputUnit1():string;
+    inputUnit2():string;
+    outputUnit():string;
+}
+interface fabCalc3{
+    //x võib olla interfaceist väljas muu nimi. nt cm jne
+    calculate(x1:number,x2:number,x3:number):number;
+    inputUnit1():string;
+    inputUnit2():string;
+    inputUnit3():string;
     outputUnit():string;
 }
 
-class density implements fabCalc{
+
+class density implements fabCalc1{
     calculate(reed:number):number{
         return reed/10; 
     }
@@ -17,49 +32,74 @@ class density implements fabCalc{
     }
     outputUnit():string{
         return "warpPerCm";
-    }
-    
+    }  
 }
 
-//warp width
-class warpWid implements fabCalc{
-    calculate(finished:number):number{
-        return finished*1.05; 
-    }
-    inputUnit():string{
-        return "without shrinkage";
-    }
-    outputUnit():string{
-        return "with shrinkage";
-    }
-}  
 
 //warp quantity (mitu lõime)
 //density*width+(2+2 äärelõime)
-class warpQuan implements fabCalc{
-    calculate(quantity:number):number{
-        return 2+density.outputUnit*warpWid.outputUnit+2; 
+class warpQuan implements fabCalc2{
+
+    calculate(reed:number, width:number):number{
+        return 2+(reed/10)*(width*1.05)+2; 
     }
+     inputUnit1():string{
+        return "reed nr";
+     }
+     inputUnit2():string{
+        return "fabric end width";
+     }
     outputUnit():string{
-        return "warpPerCm";
+        return "number of warp threads";
     }
 }
-    //warp lenght + shrinkage
-class warpLen implements fabCalc{
-    calculate(finished2:number):number{
-        return finished2*1.2; 
+
+
+//warp lenght + shrinkage(1lõime pikkus)
+//pikkus*1,2+25+50
+class warpLen implements fabCalc1{
+    calculate(finishedLen:number):number{
+        return 25+(finishedLen*1.2)+50; 
     }
     inputUnit():string{
-        return "without shrinkage";
+        return "without shrinkage in cm";
     }
     outputUnit():string{
-        return "with shrinkage";
+        return "cm";
     }
 }
-//full warp lenght
-class fullLen implements fabCalc{
-    calculate(fullWarpLen):number{
-        return 2+density.outputUnit*warpWid.outputUnit+2; 
+
+//warp material ammount
+class warpMat implements fabCalc3{
+    calculate(reed:number, width:number,finishedLen:number):number{
+        return (2+(reed/10)*(width*1.05)+2)+(25+(finishedLen*1.2)+50)
+    }
+    inputUnit1():string{
+        return "reed nr";
+     }
+    inputUnit2():string{
+        return "fabric end width";
+     }
+    inputUnit3():string{
+        return "without shrinkage in cm";
+    }
+    outputUnit():string{
+        return "cm";
+    }
+}
+//weft material ammount
+class weftpMat implements fabCalc3{
+    calculate(reed:number, finishedWid:number, finishedLen:number):number{
+        return (reed/10)*(finishedWid*1.05)+(25+(finishedLen*1.2)+50);
+    }
+    inputUnit1():string{
+        return "reed nr";
+    }
+    inputUnit2():string{
+        return "without shrinkage";
+    }
+    inputUnit3():string{
+        return "without shrinkage in cm";
     }
     outputUnit():string{
         return "cm";

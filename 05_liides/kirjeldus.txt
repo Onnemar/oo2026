@@ -1,3 +1,6 @@
 Omaloodud liides või liideste komplekt. Realiseerivad klassid. Näitprogramm
 
 interface ja html. tee töötav leht
+fabcalc 1 muudetav kalk
+fabcalk2 tava
+fabcalk3 muudetav

@@ -3,61 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-    <script src="home.js."></script>
+     <title>Weaving calculators (home)</title>
+    <script src="home.js"></script>
     <script>
-        let calculators =[];
+        let kangas;
+        let kangas1;
         function startPage(){
-            //first calculated object
-            calculators[0]= new CmToInch();
-            calculators[1]= new InchToCm();
-            activateCalculator(0);
+            kangas=new density();
+            const  type1=document.getElementById("type1");
+            type1.innerText=kangas.inputUnit();
+            const  type2=document.getElementById("type2");
+            type2.innerText=kangas.outputUnit();
+
+            kangas1 = new warpQuan();
+            const type3 = document.getElementById("type3");
+            type3.innerText = kangas1.inputUni1();
+            const type33 = document.getElementById("type33");
+            type33.innerText = kangas1.inputUnit2();
+            const type4 = document.getElementById("type4");
+            type4.innerText = kangas1.outputUnit();
         }
-        function activateCalculator(){
-            //get dropdown element
-            const select=document.getElementById("calculatorSelect");
-            //we ask which option is selected
-            const idx=select.selectedIndex;
-            //pick the calculator object from the array
-            const calc=calculators[idx];
-            const type1=document.getElementById("type1");
-            const type2=document.getElementById("type2");
-            const answer=document.getElementById("answer");
-            type1.innerText=calc.inputUnit();
-            type2.innerText=calc.outputUnit();
-            answer.innerText="";
+        
+        function buttonClick1(){
             const input=document.getElementById("input1");
-            input.value="";
+            const answer=document.getElementById("answer1");
+            const value=input.valueAsNumber;
             
+            answer.innerText=kangas.calculate(value).toFixed(2);
         }
 
-        function buttonClick(){
-            //get dropdown element
-        const select=document.getElementById("calculatorSelect");
-        //get input element
-        const input=document.getElementById("input1");
-        //get answer element
-        const answer=document.getElementById("answer");
-        //we pick the correct calculator object
-        const calc=calculators[select.selectedIndex];
-        //read the numeric value
-        const value=input.valueAsNumber;
-        answer.innerText=calc.calculate(value).toFixed(2);
-        
+      
+        function buttonClick2(){
+            const input3 = document.getElementById("input3");
+            const input33 = document.getElementById("input33");
+            const answer = document.getElementById("answer2");
+
+            const value1 = input3.valueAsNumber;
+            const value2 = input33.valueAsNumber;
+
+            answer.innerText = kangas1.calculate(value1, value2).toFixed(2);
         }
+
+
         
     </script>
+    <h1>weaving calculator</h1>
 </head>
 <body onload="startPage()">
-    <input type="number" id="input1" onchange="buttonClick()">
+<p>Program helps to calculate weaving density, ammount of warp threads, lenght of warp threads, ammount of material needed for warp and weft.</p>
+    <input type="number" id="input1" onchange="buttonClick1()">
     <span id="type1"></span>
-    <input type="button" value="=" onclick="buttonClick()"/>
-    <span id="answer"></span>
-    <span id="type2"></span><br>
+    <input type="button" value="=" onclick="buttonClick1()">
+    <span id="answer1"></span>
+    <span id="type2"></span>
+    <br>
 
-    <select id="calculatorSelect" onchange="activateCalculator()">
-    <option value="">centimeters to inches</option>
-    <option value="">inches to centimeters</option>
+    <input type="number" id="input3" onchange="buttonClick2()">
+    <span id="type3"></span>
+    <input type="number" id="input33" onchange="buttonClick2()">
+    <span id="type33"></span>
+    <input type="button" value="=" onclick="buttonClick2()">
+    <span id="answer2"></span>
+    <span id="type4"></span>
+
+ 
+</body>
 </select>
 </body>
 </html>

@@ -11,7 +11,7 @@ interface fabCalc2{
     calculate(x1:number,x2:number):number;
     inputUnit1():string;
     inputUnit2():string;
-    outputUnit():string;
+    outputUnit1():string;
 }
 interface fabCalc3{
     //x võib olla interfaceist väljas muu nimi. nt cm jne
@@ -22,7 +22,7 @@ interface fabCalc3{
     outputUnit():string;
 }
 
-
+//density(tihedus)
 class density implements fabCalc1{
     calculate(reed:number):number{
         return reed/10; 
@@ -37,7 +37,7 @@ class density implements fabCalc1{
 
 
 //warp quantity (mitu lõime)
-//density*width+(2+2 äärelõime)
+//tihedus*laius+(2+2 äärelõime)
 class warpQuan implements fabCalc2{
 
     calculate(reed:number, width:number):number{
@@ -55,7 +55,7 @@ class warpQuan implements fabCalc2{
 }
 
 
-//warp lenght + shrinkage(1lõime pikkus)
+//full warp length(1lõime pikkus)
 //pikkus*1,2+25+50
 class warpLen implements fabCalc1{
     calculate(finishedLen:number):number{

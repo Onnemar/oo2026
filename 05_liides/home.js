@@ -68,7 +68,7 @@ var warpMat = /** @class */ (function () {
         return " intended lenght of fabric in cm, ";
     };
     warpMat.prototype.outputUnit3 = function () {
-        return " m.";
+        return " m of warp material needed.";
     };
     return warpMat;
 }());
@@ -89,7 +89,7 @@ var weftMat = /** @class */ (function () {
         return " intended lenght of fabric in cm, ";
     };
     weftMat.prototype.outputUnit3 = function () {
-        return " m.";
+        return " m of weft material needed.";
     };
     return weftMat;
 }());

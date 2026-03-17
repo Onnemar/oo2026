@@ -7,36 +7,19 @@
     <script src="home.js"></script>
     <script>
 
-        let kangas1 =[];
+
         let kangas3 =[];
         function startPage(){
             //first calculated object
-            kangas1[0]= new density();
-            kangas1[1]= new warpLen();
+
             kangas3[0]= new warpMat();
             kangas3[1]= new weftMat();
-            fabCalc1();
+
 
             fabCalc3();
         }
 
-       function fabCalc1(){
-            //get dropdown element
-            const select=document.getElementById("kan1Select");
-            //we ask which option is selected
-            const idx=select.selectedIndex;
-            //pick the calculator object from the array
-            const kangas=kangas1[idx];
-            const type1=document.getElementById("type1");
-            const type11=document.getElementById("type11");
-            const answer1=document.getElementById("answer1");
-            type1.innerText=kangas.inputUnit1();
-            type11.innerText=kangas.outputUnit1();
-            answer1.innerText="";
-            const input1=document.getElementById("input1");
-            input1.value="";
-            
-        }
+
         
         function fabCalc3(){
             //get dropdown element
@@ -58,27 +41,16 @@
             answer3.innerText="";
             const input3=document.getElementById("input3");
             input3.value="";
+            
             const input33=document.getElementById("input33");
             input33.value="";
+            
             const input333=document.getElementById("input333");
             input333.value="";
             
         }
 
-        function buttonClick1(){
-            //get dropdown element
-        const select=document.getElementById("kan1Select");
-        //get input element
-        const input1=document.getElementById("input1");
-        //get answer element
-        const answer1=document.getElementById("answer1");
-        //we pick the correct calculator object
-        const kan1=kangas1[select.selectedIndex];
-        //read the numeric value
-        const value=input1.valueAsNumber;
-        answer1.innerText=kan1.calculate(value).toFixed(1);
-        
-        }
+
 
         function buttonClick3(){
             //get dropdown element
@@ -102,21 +74,6 @@
     </script>
 </head>
 <body onload="startPage()">
-   <div>
-    <input type="number" id="input1" onchange="buttonClick1()">
-    <span id="type1"></span>
-    <input type="button" value="=" onclick="buttonClick1()">
-    <span id="answer1"></span>
-    <span id="type11"></span>
-    <br>
-
-    
-
-    <select id="kan1Select" onchange="fabCalc1()">
-    <option value="">Fabric density</option>
-    <option value="">Full lenght</option>
-    </select>
-</div>
 
 <div>
     <input type="number" id="input3" onchange="buttonClick3()">

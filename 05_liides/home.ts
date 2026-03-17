@@ -91,7 +91,7 @@ class warpMat implements fabCalc3{
     }
 }
 //weft material ammount
-class weftpMat implements fabCalc3{
+class weftMat implements fabCalc3{
     calculate(reed:number, finishedWid:number, finishedLen:number):number{
         return (reed/10)*(finishedWid*1.05)+(25+(finishedLen*1.2)+50);
     }

@@ -73,23 +73,23 @@ var warpMat = /** @class */ (function () {
     return warpMat;
 }());
 //weft material ammount
-var weftpMat = /** @class */ (function () {
-    function weftpMat() {
+var weftMat = /** @class */ (function () {
+    function weftMat() {
     }
-    weftpMat.prototype.calculate = function (reed, finishedWid, finishedLen) {
+    weftMat.prototype.calculate = function (reed, finishedWid, finishedLen) {
         return (reed / 10) * (finishedWid * 1.05) + (25 + (finishedLen * 1.2) + 50);
     };
-    weftpMat.prototype.inputUnit3 = function () {
+    weftMat.prototype.inputUnit3 = function () {
         return "reed nr";
     };
-    weftpMat.prototype.inputUnit33 = function () {
+    weftMat.prototype.inputUnit33 = function () {
         return "without shrinkage";
     };
-    weftpMat.prototype.inputUnit333 = function () {
+    weftMat.prototype.inputUnit333 = function () {
         return "without shrinkage in cm";
     };
-    weftpMat.prototype.outputUnit3 = function () {
+    weftMat.prototype.outputUnit3 = function () {
         return "cm";
     };
-    return weftpMat;
+    return weftMat;
 }());

@@ -8,6 +8,7 @@
     <script>
 
         let kangas1 =[];
+        let kangas2;
         let kangas3 =[];
         function startPage(){
             //first calculated object
@@ -103,7 +104,7 @@
 </head>
 <body onload="startPage()">
    <div>
-    <input type="number" id="input1" onchange="buttonClick1()">
+    <input type="number" id="input1" step="10" min="0"onchange="buttonClick1()">
     <span id="type1"></span>
     <input type="button" value="=" onclick="buttonClick1()">
     <span id="answer1"></span>
@@ -119,7 +120,7 @@
 </div>
 
 <div>
-    <input type="number" id="input3" onchange="buttonClick3()">
+    <input type="number" id="input3" step="10" min="0" onchange="buttonClick3()">
     <span id="type3"></span>
     <input type="number" id="input33" onchange="buttonClick3()">
     <span id="type33"></span>

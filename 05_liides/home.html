@@ -39,7 +39,7 @@
         }
         
 
-            function fabCalc2(){
+        function fabCalc2(){
             const select=document.getElementById("kan2Select");
             const kangas=kangas2
             const type2=document.getElementById("type2");
@@ -81,38 +81,38 @@
 
 
         function buttonClick1(){
-        const select=document.getElementById("kan1Select");
-        const input1=document.getElementById("input1");
-        const answer1=document.getElementById("answer1");
-        const kan1=kangas1[select.selectedIndex];
-        const value=input1.valueAsNumber;
-        answer1.innerText=kan1.calculate(value).toFixed(1);
+            const select=document.getElementById("kan1Select");
+            const input1=document.getElementById("input1");
+            const answer1=document.getElementById("answer1");
+            const kan1=kangas1[select.selectedIndex];
+            const value=input1.valueAsNumber;
+            answer1.innerText=kan1.calculate(value).toFixed(1);
         }
 
 
         function buttonClick2(){
-        const select=document.getElementById("kan2Select");
-        const input2=document.getElementById("input2");
-        const input22=document.getElementById("input22");
-        const answer2=document.getElementById("answer2");
-        const kan2=kangas2;
-        const val1=input2.valueAsNumber;
-        const val2=input22.valueAsNumber;
-        answer2.innerText=kan2.calculate(val1,val2).toFixed(1);
+            const select=document.getElementById("kan2Select");
+            const input2=document.getElementById("input2");
+            const input22=document.getElementById("input22");
+            const answer2=document.getElementById("answer2");
+            const kan2=kangas2;
+            const val1=input2.valueAsNumber;
+            const val2=input22.valueAsNumber;
+            answer2.innerText=kan2.calculate(val1,val2).toFixed(1);
         }
 
 
         function buttonClick3(){
-        const select=document.getElementById("kan3Select");
-        const input3=document.getElementById("input3");
-        const input33=document.getElementById("input33");
-        const input333=document.getElementById("input333");
-        const answer3=document.getElementById("answer3");
-        const kan3=kangas3[select.selectedIndex];
-        const val1=input3.valueAsNumber;
-        const val2=input33.valueAsNumber;
-        const val3=input333.valueAsNumber;
-        answer3.innerText=kan3.calculate(val1,val2,val3).toFixed(1);
+            const select=document.getElementById("kan3Select");
+            const input3=document.getElementById("input3");
+            const input33=document.getElementById("input33");
+            const input333=document.getElementById("input333");
+            const answer3=document.getElementById("answer3");
+            const kan3=kangas3[select.selectedIndex];
+            const val1=input3.valueAsNumber;
+            const val2=input33.valueAsNumber;
+            const val3=input333.valueAsNumber;
+            answer3.innerText=kan3.calculate(val1,val2,val3).toFixed(1);
         }
         
 
@@ -121,49 +121,47 @@
 </head>
 <body onload="startPage()">
     <p>Program helps to make all the necessary calculations before starting a new weaving project.</p><hr>
-   <p>necessary for start:</p>
+    <p>necessary for start:</p>
     <div>
-    <input type="number" id="input1" step="10" min="0"onchange="buttonClick1()">
-    <span id="type1"></span>
-    <input type="button" value="=" onclick="buttonClick1()">
-    <span id="answer1"></span>
-    <span id="type11"></span>
-    <br>
+        <input type="number" id="input1" step="10" min="0"onchange="buttonClick1()">
+        <span id="type1"></span>
+        <input type="button" value="=" onclick="buttonClick1()">
+        <span id="answer1"></span>
+        <span id="type11"></span>
+        <br>
 
-    <select id="kan1Select" onchange="fabCalc1()">
-    <option value="">Fabric density</option>
-    <option value="">Weft lenght</option>
-    </select>
-</div>
-<p>number of warp threads:</p>
-<div>
-    <input type="number" id="input2" step="10" min="0" onchange="buttonClick2()">
-    <span id="type2"></span>
-    <input type="number" id="input22" min="0"onchange="buttonClick2()">
-    <span id="type22"></span>
-    <input type="button" value="=" onclick="buttonClick2()"/>&nbsp;
-    <span id="answer2"></span>
-    <span id="type222"></span><br>
+        <select id="kan1Select" onchange="fabCalc1()">
+            <option value="">Fabric density</option>
+            <option value="">Weft lenght</option>
+        </select>
+    </div>
+    <p>number of warp threads:</p>
+    <div>
+        <input type="number" id="input2" step="10" min="0" onchange="buttonClick2()">
+        <span id="type2"></span>
+        <input type="number" id="input22" min="0"onchange="buttonClick2()">
+        <span id="type22"></span>
+        <input type="button" value="=" onclick="buttonClick2()"/>&nbsp;
+        <span id="answer2"></span>
+        <span id="type222"></span><br>
+    </div>
+    <p>needed ammount of material:</p>
+    <div>
+        <input type="number" id="input3" step="10" min="0" onchange="buttonClick3()">
+        <span id="type3"></span>
+        <input type="number" id="input33" min="0"onchange="buttonClick3()">
+        <span id="type33"></span>
+        <input type="number" id="input333" min="0"onchange="buttonClick3()">
+        <span id="type333"></span>
+        <input type="button" value="=" onclick="buttonClick3()"/>&nbsp;
+        <span id="answer3"></span>
+        <span id="type3333"></span><br>
 
-</select>
-</div>
-<p>needed ammount of material:</p>
-<div>
-    <input type="number" id="input3" step="10" min="0" onchange="buttonClick3()">
-    <span id="type3"></span>
-    <input type="number" id="input33" min="0"onchange="buttonClick3()">
-    <span id="type33"></span>
-    <input type="number" id="input333" min="0"onchange="buttonClick3()">
-    <span id="type333"></span>
-    <input type="button" value="=" onclick="buttonClick3()"/>&nbsp;
-    <span id="answer3"></span>
-    <span id="type3333"></span><br>
-
-    <select id="kan3Select" onchange="fabCalc3()">
-    <option value="">total warp material in m</option>
-    <option value="">total weft material in m</option>
-</select>
-</div>
+        <select id="kan3Select" onchange="fabCalc3()">
+            <option value="">total warp material in m</option>
+            <option value="">total weft material in m</option>
+        </select>
+    </div>
 
 </body>
 </html>

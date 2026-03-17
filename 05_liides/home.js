@@ -7,10 +7,10 @@ var density = /** @class */ (function () {
         return reed / 10;
     };
     density.prototype.inputUnit1 = function () {
-        return "reed nr";
+        return " reed nr, ";
     };
     density.prototype.outputUnit1 = function () {
-        return "warpPerCm";
+        return "warps per cm.";
     };
     return density;
 }());
@@ -23,10 +23,10 @@ var warpLen = /** @class */ (function () {
         return 25 + (finishedLen * 1.2) + 50;
     };
     warpLen.prototype.inputUnit1 = function () {
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     };
     warpLen.prototype.outputUnit1 = function () {
-        return "cm";
+        return " full lenght of the warp in cm.";
     };
     return warpLen;
 }());
@@ -40,13 +40,13 @@ var warpQuan = /** @class */ (function () {
         return 2 + (reed / 10) * (width * 1.05) + 2;
     };
     warpQuan.prototype.inputUnit2 = function () {
-        return "reed nr";
+        return " reed nr, ";
     };
     warpQuan.prototype.inputUnit22 = function () {
-        return "fabric end width";
+        return " intended width of fabric in cm, ";
     };
     warpQuan.prototype.outputUnit2 = function () {
-        return "number of warp threads";
+        return " number of warp threads needed.";
     };
     return warpQuan;
 }());
@@ -59,16 +59,16 @@ var warpMat = /** @class */ (function () {
         return (2 + (reed / 10) * (width * 1.05) + 2) + (25 + (finishedLen * 1.2) + 50);
     };
     warpMat.prototype.inputUnit3 = function () {
-        return "reed nr";
+        return " reed nr, ";
     };
     warpMat.prototype.inputUnit33 = function () {
-        return "fabric end width";
+        return " intended width of fabric in cm, ";
     };
     warpMat.prototype.inputUnit333 = function () {
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     };
     warpMat.prototype.outputUnit3 = function () {
-        return "cm";
+        return " m.";
     };
     return warpMat;
 }());
@@ -80,16 +80,16 @@ var weftMat = /** @class */ (function () {
         return (reed / 10) * (finishedWid * 1.05) + (25 + (finishedLen * 1.2) + 50);
     };
     weftMat.prototype.inputUnit3 = function () {
-        return "reed nr";
+        return " reed nr, ";
     };
     weftMat.prototype.inputUnit33 = function () {
-        return "without shrinkage";
+        return " intended width of fabric in cm, ";
     };
     weftMat.prototype.inputUnit333 = function () {
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     };
     weftMat.prototype.outputUnit3 = function () {
-        return "cm";
+        return " m.";
     };
     return weftMat;
 }());

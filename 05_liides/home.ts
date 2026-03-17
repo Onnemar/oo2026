@@ -28,10 +28,10 @@ class density implements fabCalc1{
         return reed/10; 
     }
     inputUnit1():string{
-        return "reed nr";
+        return " reed nr, ";
     }
     outputUnit1():string{
-        return "warpPerCm";
+        return "warps per cm.";
     }  
 }
 
@@ -42,10 +42,10 @@ class warpLen implements fabCalc1{
         return 25+(finishedLen*1.2)+50; 
     }
     inputUnit1():string{
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     }
     outputUnit1():string{
-        return "cm";
+        return " full lenght of the warp in cm.";
     }
 }
 
@@ -59,13 +59,13 @@ class warpQuan implements fabCalc2{
         return 2+(reed/10)*(width*1.05)+2; 
     }
      inputUnit2():string{
-        return "reed nr";
+        return " reed nr, ";
      }
      inputUnit22():string{
-        return "fabric end width";
+        return " intended width of fabric in cm, ";
      }
     outputUnit2():string{
-        return "number of warp threads";
+        return " number of warp threads needed.";
     }
 }
 
@@ -78,16 +78,16 @@ class warpMat implements fabCalc3{
         return (2+(reed/10)*(width*1.05)+2)+(25+(finishedLen*1.2)+50)
     }
     inputUnit3():string{
-        return "reed nr";
+        return " reed nr, ";
      }
     inputUnit33():string{
-        return "fabric end width";
+        return " intended width of fabric in cm, ";
      }
     inputUnit333():string{
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     }
     outputUnit3():string{
-        return "cm";
+        return " m of warp material needed.";
     }
 }
 //weft material ammount
@@ -96,15 +96,15 @@ class weftMat implements fabCalc3{
         return (reed/10)*(finishedWid*1.05)+(25+(finishedLen*1.2)+50);
     }
     inputUnit3():string{
-        return "reed nr";
+        return " reed nr, ";
     }
     inputUnit33():string{
-        return "without shrinkage";
+        return " intended width of fabric in cm, ";
     }
     inputUnit333():string{
-        return "without shrinkage in cm";
+        return " intended lenght of fabric in cm, ";
     }
     outputUnit3():string{
-        return "cm";
+        return " m of weft material needed.";
     }
 }

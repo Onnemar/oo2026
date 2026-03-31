@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Calculator = void 0;
 var Calculator = /** @class */ (function () {
     function Calculator() {
+        //What is currently display on the panel
         this.panel = "";
     }
-    //what is currently on panel
     Calculator.prototype.pressButton = function (b) {
         if (b === "C") {
             this.panel = "0";

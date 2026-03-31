@@ -1,17 +1,19 @@
 class Calculator{
-    protected panel:string=""
-    //what is currently on panel
-    pressButton(b:string):void{  
-        if (b==="C"){
-            this.panel="0";
+    //What is currently display on the panel
+    protected panel:string="";
+
+    pressButton(b: string):void{
+        if(b=== "C"){
+            this.panel="0"
         }
         else{
             this.panel +=b;
         }
+        
     }
 
-    getPanelContent():string{
-    return this.panel;
+    getPanelContent(): string{
+        return this.panel;
     }
 }
 

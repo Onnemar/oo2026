@@ -1,110 +1,113 @@
-
-//fabCalc- fabric calculation
-interface fabCalc1{
+interface years{
     //x võib olla interfaceist väljas muu nimi. nt cm jne
-    calculate(x:number):number;
+  calculate(x1:number):number;
+
     inputUnit1():string;
-    outputUnit1():string;
+
+    outputUnit():string;
 }
-interface fabCalc2{
-    //x võib olla interfaceist väljas muu nimi. nt cm jne
-    calculate(x1:number,x2:number):number;
-    inputUnit2():string;
-    inputUnit22():string;
-    outputUnit2():string;
-}
-interface fabCalc3{
-    //x võib olla interfaceist väljas muu nimi. nt cm jne
-    calculate(x1:number,x2:number,x3:number):number;
-    inputUnit3():string;
-    inputUnit33():string;
-    inputUnit333():string;
-    outputUnit3():string;
-}
-//fabCalc1
-//density(tihedus)
-class density implements fabCalc1{
-    calculate(reed:number):number{
-        return reed/10; 
+
+class humanToDog implements years{
+    calculate(humanAge:number):number{
+        return humanAge*18; 
     }
     inputUnit1():string{
-        return " reed nr, ";
+        return " human years";
     }
-    outputUnit1():string{
-        return "warps per cm.";
-    }  
+    outputUnit():string{
+        return " dog years.";
+    }
+    
 }
-
-//full warp length(1lõime pikkus)
-//pikkus*1,2+25+50
-class warpLen implements fabCalc1{
-    calculate(finishedLen:number):number{
-        return 25+(finishedLen*1.2)+50; 
+class dogToHuman implements years{
+    calculate(animalAge:number):number{
+        return animalAge/18; 
     }
     inputUnit1():string{
-        return " intended lenght of fabric in cm, ";
+        return " dog years";
     }
-    outputUnit1():string{
-        return " full lenght of the warp in cm.";
+    outputUnit():string{
+        return " human years.";
     }
+    
+}
+class humanToCat implements years{
+    calculate(humanAge:number):number{
+        return humanAge*19; 
+    }
+    inputUnit1():string{
+        return " human years";
+    }
+    outputUnit():string{
+        return " cat years.";
+    }
+    
 }
 
-
-//fabCalc2
-//warp quantity (mitu lõime)
-//tihedus*laius+(2+2 äärelõime)
-class warpQuan implements fabCalc2{
-
-    calculate(reed:number, width:number):number{
-        return 2+(reed/10)*(width*1.05)+2; 
+class catToHuman implements years{
+    calculate(animalAge:number):number{
+        return animalAge/19; 
     }
-     inputUnit2():string{
-        return " reed nr, ";
-     }
-     inputUnit22():string{
-        return " intended width of fabric in cm, ";
-     }
-    outputUnit2():string{
-        return " number of warp threads needed.";
+    inputUnit1():string{
+        return " cat years";
     }
+    outputUnit():string{
+        return " human years.";
+    }
+    
+}
+class humanToRabbit implements years{
+    calculate(humanAge:number):number{
+        return humanAge*20; 
+    }
+    inputUnit1():string{
+        return " human years";
+    }
+
+    outputUnit():string{
+        return " rabbit years.";
+    }
+    
 }
 
+class rabbitToHuman implements years{
+    calculate(animalAge:number):number{
+        return animalAge/20; 
+    }
+    inputUnit1():string{
+        return " human years";
+    }
 
-
-//fabCalc3
-//warp material ammount
-class warpMat implements fabCalc3{
-    calculate(reed:number, width:number,finishedLen:number):number{
-        return (2+(reed/10)*(width*1.05)+2)+(25+(finishedLen*1.2)+50)
+    outputUnit():string{
+        return " rabbit years.";
     }
-    inputUnit3():string{
-        return " reed nr, ";
-     }
-    inputUnit33():string{
-        return " intended width of fabric in cm, ";
-     }
-    inputUnit333():string{
-        return " intended lenght of fabric in cm, ";
-    }
-    outputUnit3():string{
-        return " m of warp material needed.";
-    }
+    
 }
-//weft material ammount
-class weftMat implements fabCalc3{
-    calculate(reed:number, finishedWid:number, finishedLen:number):number{
-        return (reed/10)*(finishedWid*1.05)+(25+(finishedLen*1.2)+50);
+
+class humanToHamster implements years{
+    calculate(humanAge:number):number{
+        return humanAge*14; 
     }
-    inputUnit3():string{
-        return " reed nr, ";
+    inputUnit1():string{
+        return " human years";
     }
-    inputUnit33():string{
-        return " intended width of fabric in cm, ";
+
+    outputUnit():string{
+        return " hamster years.";
     }
-    inputUnit333():string{
-        return " intended lenght of fabric in cm, ";
+    
+}
+
+class hamsterToHuman implements years{
+    calculate(animalAge:number):number{
+        return animalAge/14; 
     }
-    outputUnit3():string{
-        return " m of weft material needed.";
+    inputUnit1():string{
+        return " human years";
     }
+
+    outputUnit():string{
+        return " hamster years.";
+    }
+    
 }

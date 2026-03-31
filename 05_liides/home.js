@@ -1,95 +1,112 @@
-//fabCalc1
-//density(tihedus)
-var density = /** @class */ (function () {
-    function density() {
+var humanToDog = /** @class */ (function () {
+    function humanToDog() {
     }
-    density.prototype.calculate = function (reed) {
-        return reed / 10;
+    humanToDog.prototype.calculate = function (humanAge) {
+        return humanAge * 18;
     };
-    density.prototype.inputUnit1 = function () {
-        return " reed nr, ";
+    humanToDog.prototype.inputUnit1 = function () {
+        return " human years";
     };
-    density.prototype.outputUnit1 = function () {
-        return "warps per cm.";
+    humanToDog.prototype.outputUnit = function () {
+        return " dog years.";
     };
-    return density;
+    return humanToDog;
 }());
-//full warp length(1lõime pikkus)
-//pikkus*1,2+25+50
-var warpLen = /** @class */ (function () {
-    function warpLen() {
+var dogToHuman = /** @class */ (function () {
+    function dogToHuman() {
     }
-    warpLen.prototype.calculate = function (finishedLen) {
-        return 25 + (finishedLen * 1.2) + 50;
+    dogToHuman.prototype.calculate = function (animalAge) {
+        return animalAge / 18;
     };
-    warpLen.prototype.inputUnit1 = function () {
-        return " intended lenght of fabric in cm, ";
+    dogToHuman.prototype.inputUnit1 = function () {
+        return " dog years";
     };
-    warpLen.prototype.outputUnit1 = function () {
-        return " full lenght of the warp in cm.";
+    dogToHuman.prototype.outputUnit = function () {
+        return " human years.";
     };
-    return warpLen;
+    return dogToHuman;
 }());
-//fabCalc2
-//warp quantity (mitu lõime)
-//tihedus*laius+(2+2 äärelõime)
-var warpQuan = /** @class */ (function () {
-    function warpQuan() {
+var humanToCat = /** @class */ (function () {
+    function humanToCat() {
     }
-    warpQuan.prototype.calculate = function (reed, width) {
-        return 2 + (reed / 10) * (width * 1.05) + 2;
+    humanToCat.prototype.calculate = function (humanAge) {
+        return humanAge * 19;
     };
-    warpQuan.prototype.inputUnit2 = function () {
-        return " reed nr, ";
+    humanToCat.prototype.inputUnit1 = function () {
+        return " human years";
     };
-    warpQuan.prototype.inputUnit22 = function () {
-        return " intended width of fabric in cm, ";
+    humanToCat.prototype.outputUnit = function () {
+        return " cat years.";
     };
-    warpQuan.prototype.outputUnit2 = function () {
-        return " number of warp threads needed.";
-    };
-    return warpQuan;
+    return humanToCat;
 }());
-//fabCalc3
-//warp material ammount
-var warpMat = /** @class */ (function () {
-    function warpMat() {
+var catToHuman = /** @class */ (function () {
+    function catToHuman() {
     }
-    warpMat.prototype.calculate = function (reed, width, finishedLen) {
-        return (2 + (reed / 10) * (width * 1.05) + 2) + (25 + (finishedLen * 1.2) + 50);
+    catToHuman.prototype.calculate = function (animalAge) {
+        return animalAge / 19;
     };
-    warpMat.prototype.inputUnit3 = function () {
-        return " reed nr, ";
+    catToHuman.prototype.inputUnit1 = function () {
+        return " cat years";
     };
-    warpMat.prototype.inputUnit33 = function () {
-        return " intended width of fabric in cm, ";
+    catToHuman.prototype.outputUnit = function () {
+        return " human years.";
     };
-    warpMat.prototype.inputUnit333 = function () {
-        return " intended lenght of fabric in cm, ";
-    };
-    warpMat.prototype.outputUnit3 = function () {
-        return " m of warp material needed.";
-    };
-    return warpMat;
+    return catToHuman;
 }());
-//weft material ammount
-var weftMat = /** @class */ (function () {
-    function weftMat() {
+var humanToRabbit = /** @class */ (function () {
+    function humanToRabbit() {
     }
-    weftMat.prototype.calculate = function (reed, finishedWid, finishedLen) {
-        return (reed / 10) * (finishedWid * 1.05) + (25 + (finishedLen * 1.2) + 50);
+    humanToRabbit.prototype.calculate = function (humanAge) {
+        return humanAge * 20;
     };
-    weftMat.prototype.inputUnit3 = function () {
-        return " reed nr, ";
+    humanToRabbit.prototype.inputUnit1 = function () {
+        return " human years";
     };
-    weftMat.prototype.inputUnit33 = function () {
-        return " intended width of fabric in cm, ";
+    humanToRabbit.prototype.outputUnit = function () {
+        return " rabbit years.";
     };
-    weftMat.prototype.inputUnit333 = function () {
-        return " intended lenght of fabric in cm, ";
+    return humanToRabbit;
+}());
+var rabbitToHuman = /** @class */ (function () {
+    function rabbitToHuman() {
+    }
+    rabbitToHuman.prototype.calculate = function (animalAge) {
+        return animalAge / 20;
     };
-    weftMat.prototype.outputUnit3 = function () {
-        return " m of weft material needed.";
+    rabbitToHuman.prototype.inputUnit1 = function () {
+        return " human years";
     };
-    return weftMat;
+    rabbitToHuman.prototype.outputUnit = function () {
+        return " rabbit years.";
+    };
+    return rabbitToHuman;
+}());
+var humanToHamster = /** @class */ (function () {
+    function humanToHamster() {
+    }
+    humanToHamster.prototype.calculate = function (humanAge) {
+        return humanAge * 14;
+    };
+    humanToHamster.prototype.inputUnit1 = function () {
+        return " human years";
+    };
+    humanToHamster.prototype.outputUnit = function () {
+        return " hamster years.";
+    };
+    return humanToHamster;
+}());
+var hamsterToHuman = /** @class */ (function () {
+    function hamsterToHuman() {
+    }
+    hamsterToHuman.prototype.calculate = function (animalAge) {
+        return animalAge / 14;
+    };
+    hamsterToHuman.prototype.inputUnit1 = function () {
+        return " human years";
+    };
+    hamsterToHuman.prototype.outputUnit = function () {
+        return " hamster years.";
+    };
+    return hamsterToHuman;
 }());

@@ -1,17 +1,20 @@
 
 //fabCalc- fabric calculation
 interface fabCalc1{
+    //x võib olla interfaceist väljas muu nimi. nt cm jne
     calculate(x:number):number;
     inputUnit1():string;
     outputUnit1():string;
 }
 interface fabCalc2{
+    //x võib olla interfaceist väljas muu nimi. nt cm jne
     calculate(x1:number,x2:number):number;
     inputUnit2():string;
     inputUnit22():string;
     outputUnit2():string;
 }
 interface fabCalc3{
+    //x võib olla interfaceist väljas muu nimi. nt cm jne
     calculate(x1:number,x2:number,x3:number):number;
     inputUnit3():string;
     inputUnit33():string;
@@ -20,7 +23,7 @@ interface fabCalc3{
 }
 //fabCalc1
 //density(tihedus)
-export class density implements fabCalc1{
+class density implements fabCalc1{
     calculate(reed:number):number{
         return reed/10; 
     }
@@ -28,13 +31,13 @@ export class density implements fabCalc1{
         return " reed nr, ";
     }
     outputUnit1():string{
-        return " warps per cm.";
+        return "warps per cm.";
     }  
 }
 
 //full warp length(1lõime pikkus)
 //pikkus*1,2+25+50
-export class warpLen implements fabCalc1{
+class warpLen implements fabCalc1{
     calculate(finishedLen:number):number{
         return 25+(finishedLen*1.2)+50; 
     }
@@ -50,7 +53,7 @@ export class warpLen implements fabCalc1{
 //fabCalc2
 //warp quantity (mitu lõime)
 //tihedus*laius+(2+2 äärelõime)
-export class warpQuan implements fabCalc2{
+class warpQuan implements fabCalc2{
 
     calculate(reed:number, width:number):number{
         return 2+(reed/10)*(width*1.05)+2; 
@@ -70,7 +73,7 @@ export class warpQuan implements fabCalc2{
 
 //fabCalc3
 //warp material ammount
-export class warpMat implements fabCalc3{
+class warpMat implements fabCalc3{
     calculate(reed:number, width:number,finishedLen:number):number{
         return (2+(reed/10)*(width*1.05)+2)+(25+(finishedLen*1.2)+50)
     }
@@ -88,7 +91,7 @@ export class warpMat implements fabCalc3{
     }
 }
 //weft material ammount
-export class weftMat implements fabCalc3{
+class weftMat implements fabCalc3{
     calculate(reed:number, finishedWid:number, finishedLen:number):number{
         return (reed/10)*(finishedWid*1.05)+(25+(finishedLen*1.2)+50);
     }
@@ -104,4 +107,11 @@ export class weftMat implements fabCalc3{
     outputUnit3():string{
         return " m of weft material needed.";
     }
+}
+export{
+    density,
+    warpLen,
+    warpQuan,
+    warpMat,
+    weftMat
 }

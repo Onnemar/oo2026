@@ -13,7 +13,7 @@ var density = /** @class */ (function () {
         return " reed nr, ";
     };
     density.prototype.outputUnit1 = function () {
-        return " warps per cm.";
+        return "warps per cm.";
     };
     return density;
 }());

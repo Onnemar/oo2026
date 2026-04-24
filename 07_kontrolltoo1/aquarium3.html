@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquarium</title>
+    <script src="aquarium3.js"></script>
+    <script>
+        function startPage(){
+            document.getElementById("output").innerText="Aquarium is empty"
+        }
+
+        function getVolume(){
+            const aquariumLenght=document.getElementById("lenght").valueAsNumber;
+            const aquariumWidth=document.getElementById("width").valueAsNumber;
+            const aquariumHeight=document.getElementById("height").valueAsNumber;
+            aqua=new aquarium(height,width,lenght);
+            aquarium.getVolume(volume);
+
+            const select=document.getElementById("")
+
+
+        }
+
+        function addWater(){
+
+        }
+
+        function removeWater(){
+
+        }
+
+    </script>
+</head>
+<body onload="startPage()">
+    <h2>Adding water to an aquarium</h2>
+    <p>Add the units in  cm and cm3</p><hr>
+    <label for="lenght">If aquarium lenght is</label>
+    <input type="number" id="lenght" min="1">cm
+    <label for="width">, aquarium width is</label>
+    <input type="number" id="width" min="1">cm
+    <label for="height"> and aquarium height is</label>
+    <input type="number" id="height" min="1">cm.
+    <input type="button" value="Then aquarium volume is:" onclick="getVolume()">
+    <span id="volume">cm3.</span>
+    <span id="type1"></span>
+    <hr>
+
+    <label for="add"> add water</label>
+    <input type="number" id="waterAdded" min="1">cm3.
+    <input type="button" value="add" onclick="addWater()"> <br>
+    <label for="remove"> remove water</label>
+    <input type="number" id="waterAdded" min="1">cm3. 
+    <input type="button" value="remove" onclick="removeWater()"><hr>
+
+    <p id="output"></p>
+    
+
+  
+ 
+   
+</body>
+</html>

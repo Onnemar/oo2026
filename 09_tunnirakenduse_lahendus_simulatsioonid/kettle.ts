@@ -20,7 +20,7 @@ class Water{
     getTemperature():number{
         return this.temperature;
     }
-    //this will simulate heating water for 1 sek.
+    //this will simulate heating water for 1 temp.
     //it is going to increase the temperature based on power, water ammount, special heat capacity
     heatPerSecond():void{
         let joules=this.heatingPower;

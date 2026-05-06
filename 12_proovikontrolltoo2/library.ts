@@ -1,45 +1,33 @@
-class  LibraryItem {
-    id:string;
-    title:string;
-    author:string;
-    year:number;
-    
-    constructor(id:string, title:string, author:string, year:number){
-        //trim removes whitespaces from both ends of the string
-        //=== checking whether this is empty after removing spaces
-        if (id.trim()==="") throw new Error("ID can not be empty");
+class LibraryItem{
+    id: string;
+    title: string;
+    author: string;
+    year: number;
+
+    constructor(id: string, title:string, author:string, year:number){
+    //Removes the whitespaces from both ends of the string
+    //=== checking whether this is empty after removing spaces
+        if(id.trim()==="") throw new Error("ID cannot be emprty");
         this.id=id;
         this.title=title;
         this.author=author;
         this.year=year;
     }
 
-    getId():string{
-        return this.id;
-    }
+    getId(): string{return this.id;}
+    getTitle(): string{return this.title;}
+    getAuthor(): string{return this.author;}
+    getYear(): number{return this.year;}
+    getSummary(): string{return `[Item] ${this.title}`;}
 
-    getTitle():string{
-        return this.title;
-    }
-
-    getAuthor():string{
-        return this.author;
-    }
-
-    getYear():number{
-        return this.year;
-    }
-
-    getSummary():string{
-        return`[item] $(this.title)`;
-    }
 }
 
+//-------------------------------Book------------------------------------
 class Book extends LibraryItem{
-    pages:number;
-    ISBN:string;
+    pages: number;
+    ISBN: string;
 
-      constructor(id:string, title:string, author:string, year:number, pages:number, ISBN:string
+    constructor(id:string, title:string, author:string, year:number, pages:number, ISBN:string
     ){
         super(id, title, author, year);
         if(pages <=0) throw new Error("Pages must be positive");
@@ -50,7 +38,8 @@ class Book extends LibraryItem{
     getSummary(): string {
         return `[Book] ${this.title} (${this.year})`;
     }
-
+    //This method convert the Book object into a text line (for saving)
+    //Here each property is seperated by | so we can read it easily later
     toFillLine():string{
         return `[Book]|${this.id}|${this.title}|${this.author}|(${this.year})|${this.pages}|${this.ISBN}`;
     }
@@ -70,11 +59,12 @@ class DVD extends LibraryItem{
     }
 
     toFillLine():string{
-        return `[DVD]|${this.id}|${this.title}|${this.author}|(${this.year})|${this.duration}}`;
+        return `[DVD]|${this.id}|${this.title}|${this.author}|(${this.year})|${this.duration}`;
     }
 }
 
-//----------------------------library---------------------------------------------
+//---------------------------------Library-------------------
+//Manage all the items
 class Library{
     items:LibraryItem[];
 
@@ -130,22 +120,15 @@ export{
     Library
 }
 
-
-
-const item1=new LibraryItem("1","name","unknown", 2024);
-console.log(item1);
-
-const book1=new Book("29","pealkiri", "autor", 2013, 216,"eugr873");
-const book2=new Book("94","pealkirimingi", "aulotor", 2053, 316,"g4573");
-console.log(book1);
-console.log(item1.getSummary());
-console.log(book1.getSummary());
-console.log(book1.toFillLine());
-const lib= new Library();
+const item1=new LibraryItem("1", "Generic item", "unknown", 2020);
+console.log(item1)
+const book1=new Book("2B", "Harry Potter", "J.K rowling", 1990, 300, "334445");
+const book2=new Book("3B", "The hobbit", "J.R.R Tolkien", 1937, 300, "554445");
+console.log(book1)
+console.log(item1.getSummary())
+console.log(book1.getSummary())
+console.log(book1.toFillLine())
+const lib=new Library();
 lib.addItem(book1);
 lib.addItem(book2);
-console.log(lib.toText());
-
-
-const DVD1=new DVD("29","pealkiri", "autor", 2013, 2.16);
-console.log(DVD1);
+console.log(lib.toText())

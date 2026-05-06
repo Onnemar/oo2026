@@ -18,33 +18,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Library = exports.DVD = exports.Book = exports.LibraryItem = void 0;
 var LibraryItem = /** @class */ (function () {
     function LibraryItem(id, title, author, year) {
-        //trim removes whitespaces from both ends of the string
+        //Removes the whitespaces from both ends of the string
         //=== checking whether this is empty after removing spaces
         if (id.trim() === "")
-            throw new Error("ID can not be empty");
+            throw new Error("ID cannot be emprty");
         this.id = id;
         this.title = title;
         this.author = author;
         this.year = year;
     }
-    LibraryItem.prototype.getId = function () {
-        return this.id;
-    };
-    LibraryItem.prototype.getTitle = function () {
-        return this.title;
-    };
-    LibraryItem.prototype.getAuthor = function () {
-        return this.author;
-    };
-    LibraryItem.prototype.getYear = function () {
-        return this.year;
-    };
-    LibraryItem.prototype.getSummary = function () {
-        return "[item] $(this.title)";
-    };
+    LibraryItem.prototype.getId = function () { return this.id; };
+    LibraryItem.prototype.getTitle = function () { return this.title; };
+    LibraryItem.prototype.getAuthor = function () { return this.author; };
+    LibraryItem.prototype.getYear = function () { return this.year; };
+    LibraryItem.prototype.getSummary = function () { return "[Item] ".concat(this.title); };
     return LibraryItem;
 }());
 exports.LibraryItem = LibraryItem;
+//-------------------------------Book------------------------------------
 var Book = /** @class */ (function (_super) {
     __extends(Book, _super);
     function Book(id, title, author, year, pages, ISBN) {
@@ -58,6 +49,8 @@ var Book = /** @class */ (function (_super) {
     Book.prototype.getSummary = function () {
         return "[Book] ".concat(this.title, " (").concat(this.year, ")");
     };
+    //This method convert the Book object into a text line (for saving)
+    //Here each property is seperated by | so we can read it easily later
     Book.prototype.toFillLine = function () {
         return "[Book]|".concat(this.id, "|").concat(this.title, "|").concat(this.author, "|(").concat(this.year, ")|").concat(this.pages, "|").concat(this.ISBN);
     };
@@ -78,12 +71,13 @@ var DVD = /** @class */ (function (_super) {
         return "[DVD] ".concat(this.title, " (").concat(this.year, ")");
     };
     DVD.prototype.toFillLine = function () {
-        return "[DVD]|".concat(this.id, "|").concat(this.title, "|").concat(this.author, "|(").concat(this.year, ")|").concat(this.duration, "}");
+        return "[DVD]|".concat(this.id, "|").concat(this.title, "|").concat(this.author, "|(").concat(this.year, ")|").concat(this.duration);
     };
     return DVD;
 }(LibraryItem));
 exports.DVD = DVD;
-//----------------------------library---------------------------------------------
+//---------------------------------Library-------------------
+//Manage all the items
 var Library = /** @class */ (function () {
     function Library() {
         this.items = [];
@@ -127,10 +121,10 @@ var Library = /** @class */ (function () {
     return Library;
 }());
 exports.Library = Library;
-var item1 = new LibraryItem("1", "name", "unknown", 2024);
+var item1 = new LibraryItem("1", "Generic item", "unknown", 2020);
 console.log(item1);
-var book1 = new Book("29", "pealkiri", "autor", 2013, 216, "eugr873");
-var book2 = new Book("94", "pealkirimingi", "aulotor", 2053, 316, "g4573");
+var book1 = new Book("2B", "Harry Potter", "J.K rowling", 1990, 300, "334445");
+var book2 = new Book("3B", "The hobbit", "J.R.R Tolkien", 1937, 300, "554445");
 console.log(book1);
 console.log(item1.getSummary());
 console.log(book1.getSummary());
@@ -139,5 +133,3 @@ var lib = new Library();
 lib.addItem(book1);
 lib.addItem(book2);
 console.log(lib.toText());
-var DVD1 = new DVD("29", "pealkiri", "autor", 2013, 2.16);
-console.log(DVD1);

@@ -36,12 +36,12 @@ class Book extends LibraryItem{
     }
 
     getSummary(): string {
-        return `[Book] ${this.title} (${this.year})`;
+        return `[BOOK] ${this.title} ${this.year}`;
     }
     //This method convert the Book object into a text line (for saving)
     //Here each property is seperated by | so we can read it easily later
     toFillLine():string{
-        return `[Book]|${this.id}|${this.title}|${this.author}|(${this.year})|${this.pages}|${this.ISBN}`;
+        return `BOOK|${this.id}|${this.title}|${this.author}|${this.year}|${this.pages}|${this.ISBN}`;
     }
 }
 
@@ -59,7 +59,7 @@ class DVD extends LibraryItem{
     }
 
     toFillLine():string{
-        return `[DVD]|${this.id}|${this.title}|${this.author}|(${this.year})|${this.duration}`;
+        return `DVD|${this.id}|${this.title}|${this.author}|(${this.year})|${this.duration}`;
     }
 }
 

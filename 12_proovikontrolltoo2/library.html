@@ -12,11 +12,11 @@
             showItems();
         }
         function updateForm(){
-            const type = document.getElementById("type").value;
-            document.getElementById("book-fields").style.display = type === "book"?"":"none";
-            document.getElementById("dvd-fields").style.display = type === "dvd"?"":"none";
-
+                const type = document.getElementById("type").value;
+            document.getElementById("book-fields").style.display = type === "book" ? "":"none";
+            document.getElementById("dvd-fields").style.display = type === "dvd" ? "":"none";
         }
+        
         function addItem(){
             const type = document.getElementById("type").value;
             let item;
@@ -49,7 +49,9 @@
             const out=document.getElementById("output");
             out.innerHTML="";
             const items=library.getAll();
-            if (items.length === 0){out.innerText = "(no items)"; return;}
+            if (items.length === 0){
+                out.innerText = "(no items)";
+                 return;}
             items.forEach(item => {
                 const div =document.createElement("div");
                 div.textContent=item.getSummary();
@@ -84,7 +86,9 @@
         a.href = url;
         a.download = "library.txt";
         // Trigger download
-        a.click();}
+        a.click();
+    URL.revokeObjectURL(url);
+    }
         
         //Expose functions to HTML buttons
         window.startPage=startPage;
@@ -94,7 +98,7 @@
         window.download=download;
         window.updateForm=updateForm;
     </script>
-    <script src="Library.js"></script>
+    <script src="library.js"></script>
 </head>
 <body onload="startPage()">
     <h1>Library system</h1>

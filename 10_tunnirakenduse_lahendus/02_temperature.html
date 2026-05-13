@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Material Heating Demo</title>
 
-    <script src="02_Temerature.js"></script>
+    <script src="02_temperature.js"></script>
     <script>
         let waterPot =null;
         let ironRadiator=null;
@@ -14,6 +14,48 @@
         function startPage(){
             document.getElementById("output").innerText="Enter values and click create objects"
         }
+
+        function createObjects(){
+            waterPot = new MaterialAmount(
+                Number (document.getElementById("waterMass").value),
+                Number (document.getElementById("waterSpecial").value),
+                Number (document.getElementById("waterTemp").value)
+            );
+           
+            ironRadiator = new MaterialAmount(
+                Number (document.getElementById("ironMass").value),
+                Number (document.getElementById("ironSpecial").value),
+                Number (document.getElementById("ironTemp").value)
+         );
+            airInRoom = new AirAmount(
+                Number (document.getElementById("length").value),
+                Number (document.getElementById("width").value),
+                Number (document.getElementById("height").value),
+                Number (document.getElementById("airTemp").value)
+            );
+            document.getElementById ("output").innerText ="created!";
+        }   
+
+        function calEqTemp(){
+            let eqTemp = getEqualTemperature([waterPot, ironRadiator, airInRoom]);
+            applyHeat(waterPot,eqTemp);
+            applyHeat(ironRadiator,eqTemp);
+            applyHeat(airInRoom, eqTemp);
+            
+
+            document.getElementById("output").innerText = "heat transferred!\n"+
+            "Water: " + waterPot.getTemperature().toFixed(2) + "°C\n"+
+            "Iron: " + ironRadiator.getTemperature().toFixed(2) + "°C\n"+
+            "Air: " + airInRoom.getTemperature().toFixed(2) + "°C\n";
+        }
+        function applyHeat(obj, targetTemp){
+            <!-- Q = m * c * ΔT-->
+            let deltaT = targetTemp - obj.getTemperature();
+            let joules = obj.mass * obj.specificHeatCapacity *deltaT;
+            obj.changeEnergy(joules);
+        }
+
+
     </script>
 
 
@@ -24,9 +66,34 @@
     <h2>Water</h2>
     <label>Mass (kg): </label>
     <input type="number" id="waterMass" value=""><br><br>
-    <label>Temerature (°C): </label>
+    <label>Temperature (°C): </label>
+    <input type="number" id="waterTemp" value=""><br><br>
+    <label>Specific heat capacity</label>
+    <input type="number" id="waterSpecial" value="4184"><br><br>
+
+    <h2>iron Radiator</h2>
+    <label>Mass (kg): </label>
+    <input type="number" id="ironMass" value=""><br><br>
+    <label>Temperature (°C): </label>
     <input type="number" id="ironTemp" value=""><br><br>
-    <h2 id="output"></h2>
-    
+    <label>Specific heat capacity</label>
+    <input type="number" id="ironSpecial" value="450"><br><br>
+
+    <h2>Air in a room</h2>
+    <label>Room length (m): </label>
+    <input type="number" id="length" value=""><br><br>
+
+    <label>Room width (m): </label>
+    <input type="number" id="width" value=""><br><br>
+    <label>Room height (m): </label>
+    <input type="number" id="height" value=""><br><br>
+    <label>temperature (°C): </label>
+    <input type="number" id="airTemp" value=""><br><br>
+
+    <button onclick = "createObjects()">Create objects and calculate</button>
+   
+    <button onclick="calEqTemp()">Calculate equal temperature</button>
+
+    <h2 id="output"></h2>  
 </body>
 </html>

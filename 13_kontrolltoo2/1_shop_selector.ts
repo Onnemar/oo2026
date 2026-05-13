@@ -33,7 +33,7 @@ s1.visit(13);
 s1.visit(13);
 s1.visit(13);
 s1.visit(13);
-s1.visit(13);
+s1.visit(19);
 console.log(s1.isOpen())
 
 console.log(s1.visit(11))

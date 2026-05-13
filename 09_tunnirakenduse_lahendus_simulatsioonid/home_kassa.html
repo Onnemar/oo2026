@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash register</title>
+    <script src="home_kassa.js"></script>
+    <script>
+        let register = null;
+
+        function startPage(){
+            document.getElementById("output").innerText = "Cash register is not started yet";
+        }
+
+        function startRegister(){
+            const cashInside = document.getElementById("cashInside").valueAsNumber;
+            const taxRate = document.getElementById("taxRate").valueAsNumber;
+
+            if(isNaN(cashInside) || isNaN(taxRate)){
+                document.getElementById("output").innerText = "Please fill all the fields before starting";
+                return;
+            }
+            register = new CashRegister (cashInside, taxRate);
+            document.getElementById("output").innerText = `Cash register started with ${register.getCashAmount().toFixed(2)}€ inside`
+        }
+
+        function scannerOn(){
+            if(!register){
+                document.getElementById("output").innerText = "Please start the cash register first";
+                return;
+            }
+            register.scannerOn();
+            document.getElementById("output").innerText = "Scanner in now on";
+        }
+
+        function scannerOff(){
+            if (!register) {
+                document.getElementById("output").innerText = "Please start the cash register first";
+                return;
+            }
+            register.scannerOff();
+            document.getElementById("output").innerText = "Scanner is now off";
+        }
+
+        function cardPay(){
+            if (!register) {
+                document.getElementById("output").innerText = "Please start the cash register first";
+                return;
+            }
+            const price = document.getElementById("cardPrice").valueAsNumber;
+            register.card(price);
+            document.getElementById("output").innerText = `${register.getCardAmount().toFixed(2)}€ is paid with card total`
+        }
+
+        function cashPay(){
+            if (!register) {
+                document.getElementById("output").innerText = "Please start the cash register first";
+                return;
+            }
+            const paid = document.getElementById("paid").valueAsNumber;
+            const price = document.getElementById("cashPrice").valueAsNumber;
+            const result = register.cash (paid, price);
+                document.getElementById("output").innerText= `cash inside the remains ${register.getCashAmount().toFixed(2)}€. Cash drawer is stuck.`;
+            
+        }
+    </script>
+</head>
+<body onload="startPage()">
+    <h1>Cash register terminal Demo</h1>
+    <hr>
+    <label>Starting cash inside cash register</label>
+    <input type="number" id="cashInside" min="0"><br>
+    <label>Tax rate</label>
+    <input type="number" id="taxRate" min="0">
+    <input type="button" value="Start cash register" onclick="startRegister()"><hr>
+    <hr>
+    <button onclick="scannerOn()">turn on</button>
+    <button onclick="scannerOff()">turn off</button> <hr><hr>
+
+    <h3>Card payment</h3>
+    <label>Product price</label>
+    <input type="number" id="cardPrice" min="0">
+    <input type="button" value="Pay by card" onclick="cardPay()"><hr><hr>
+
+    <h3>Cash payment</h3>
+    <label>Product price</label>
+    <input type="number" id="cashPrice" min="0">
+     <label>Paid amount</label>
+     <input type="number" id="paid" min="0">
+    <input type="button" value="Pay with cash" onclick="cashPay()"><hr><hr>
+  
+    
+    <h2 id="output"></h2>
+    
+</body>
+</html>

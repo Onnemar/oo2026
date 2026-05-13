@@ -24,8 +24,8 @@ var Shop = /** @class */ (function () {
 }());
 var s1 = new Shop(9, 15, 10);
 s1.visit(13);
-s1.visit(13);
-s1.visit(13);
+s1.visit(18);
+s1.visit(17);
 s1.visit(13);
 s1.visit(13);
 console.log(s1.isOpen());
